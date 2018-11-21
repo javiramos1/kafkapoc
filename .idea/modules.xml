@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/boxever-consumer/boxeverconsumer.iml" filepath="$PROJECT_DIR$/boxever-consumer/boxeverconsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bot/bot.iml" filepath="$PROJECT_DIR$/bot/bot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-consumer/boxever-consumer.iml" filepath="$PROJECT_DIR$/boxever-consumer/boxever-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-stream/boxever-stream.iml" filepath="$PROJECT_DIR$/boxever-stream/boxever-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
     </modules>
   </component>
 </project>
