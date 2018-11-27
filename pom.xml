@@ -5,13 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ie.irishlife.cb.kafkapoc</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>kafkapoc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>bot</module>
-        <module>boxever-stream</module>
-        <module>boxever-consumer</module>
+        <module>boxever-api</module>
+        <module>boxever-stream-transform</module>
+        <module>boxever-stream-locate</module>
+
     </modules>
 
 

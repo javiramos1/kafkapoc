@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bot" />
-        <module name="boxever-consumer" />
-        <module name="boxever-stream" />
+        <module name="boxever-api" />
+        <module name="boxever-stream-locate" />
+        <module name="boxever-stream-transform" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bot" target="1.8" />
+      <module name="boxever-api" target="1.8" />
       <module name="boxever-consumer" target="1.5" />
-      <module name="boxever-stream" target="1.8" />
+      <module name="boxever-stream-locate" target="1.8" />
+      <module name="boxever-stream-transform" target="1.8" />
       <module name="parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>

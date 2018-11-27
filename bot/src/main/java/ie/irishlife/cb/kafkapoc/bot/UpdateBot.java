@@ -11,6 +11,7 @@ public class UpdateBot {
     private static final String USER = "system";
     private static final String PASS = "oracle";
 
+
     public static void main(String[] args) {
 
         System.out.println("-------- Oracle JDBC Connection Testing ------");
@@ -48,7 +49,7 @@ public class UpdateBot {
                 }
             }) );
 
-            int i = 5445;
+            int i = 1;
 
             while(cont)
             {
@@ -72,7 +73,7 @@ public class UpdateBot {
 
                     }
 
-                    Thread.sleep(5000);
+                    Thread.sleep(19000);
                 } catch (InterruptedException e) {
                     break;
                 }

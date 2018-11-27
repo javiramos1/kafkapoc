@@ -1,0 +1,17 @@
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/CDCSerde.class
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestDeSerializer.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/CDCData.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Payload.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Field.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Before.class
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestSerde.class
+ie/irishlife/cb/kafkapoc/boxever/api/model/GuestWrapper.class
+ie/irishlife/cb/kafkapoc/boxever/api/model/Identifier.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Field_.class
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestSerializer.class
+ie/irishlife/cb/kafkapoc/boxever/api/model/Guest.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Data.class
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/CDCSerializer.class
+ie/irishlife/cb/kafkapoc/boxever/api/serializer/CDCDeSerializer.class
+ie/irishlife/cb/kafkapoc/boxever/api/model/Subscription.class
+ie/irishlife/cb/kafkapoc/boxever/api/cdc/Schema.class

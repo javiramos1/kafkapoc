@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bot/bot.iml" filepath="$PROJECT_DIR$/bot/bot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/boxever-consumer/boxever-consumer.iml" filepath="$PROJECT_DIR$/boxever-consumer/boxever-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/boxever-stream/boxever-stream.iml" filepath="$PROJECT_DIR$/boxever-stream/boxever-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-api/boxever-api.iml" filepath="$PROJECT_DIR$/boxever-api/boxever-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-stream-locate/boxever-stream-locate.iml" filepath="$PROJECT_DIR$/boxever-stream-locate/boxever-stream-locate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-stream-transform/boxever-stream-transform.iml" filepath="$PROJECT_DIR$/boxever-stream-transform/boxever-stream-transform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxever-api/boxeverapi.iml" filepath="$PROJECT_DIR$/boxever-api/boxeverapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
     </modules>
   </component>
