@@ -1,4 +1,5 @@
 from kafka import KafkaConsumer
+from kafka import KafkaProducer
 import requests
 import json
 from time import sleep
@@ -33,5 +34,11 @@ def updateGuest(href, guest):
      print("Result Update: " + response_json)
 if __name__ == '__main__': # only run command like if it is called fromt he command line
 
-     consumeMessages()
+     try:
+          consumeMessages()
+     except:
+          producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
+          print("An exception occurred")
+          producer.send('boxever-error', b'error consumer')
+          producer.flush()
 
