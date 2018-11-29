@@ -4,8 +4,6 @@
     <list default="true" id="d1840689-8a2c-48f3-b7ec-be37901fca46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-consumer-python/boxever-consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-consumer-python/boxever-consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/boxever-consumer/target/" />
     <ignored path="$PROJECT_DIR$/bot/target/" />
@@ -60,7 +58,7 @@
         <counts>
           <entry key="Dockerfile" value="39" />
           <entry key="dummy" value="69" />
-          <entry key="gitignore" value="7" />
+          <entry key="gitignore" value="8" />
           <entry key="java" value="3400" />
           <entry key="xml" value="314" />
         </counts>
@@ -68,7 +66,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3400" />
-          <entry key="PLAIN_TEXT" value="115" />
+          <entry key="PLAIN_TEXT" value="116" />
           <entry key="XML" value="314" />
         </counts>
       </usages-collector>
@@ -104,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+              <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -510,7 +508,7 @@
     <frame x="0" y="27" width="1920" height="1014" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49811321" visible="true" weight="0.2736954" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49811321" visible="true" weight="0.2736954" />
       <window_info id="Structure" order="1" sideWeight="0.5018868" side_tool="true" weight="0.26144835" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -522,7 +520,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295583" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49840257" visible="true" weight="0.3272933" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49840257" visible="true" weight="0.3272933" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159746" side_tool="true" weight="0.3997735" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840257" weight="0.3295583" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -938,7 +936,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
