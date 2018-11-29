@@ -18,9 +18,9 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
+import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.KStreamBuilder;
 import org.apache.kafka.streams.kstream.Produced;
 
 import java.io.IOException;
@@ -28,16 +28,23 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Properties;
 
+
+/**
+ * Stream App that transform CDC data into Boxever Model
+ * It gather the data from Irish Life and transform it into the Boxever Model.
+ *
+ */
 public class BoxeverDataTransform {
     public static void main(String[] args) throws IOException {
         Properties config = setUpStreamProperties();
 
         Producer<String, String> errorProducer = SetUpErrorTopic.invoke();
 
-        KStreamBuilder builder = new KStreamBuilder();
+        StreamsBuilder builder = new StreamsBuilder();
 
         KStream<String, CDCData> rawData = builder.stream("cdc");
 
+        //Transform into <ClientID,GuestWrapper> key value pair
         KStream<String, GuestWrapper>  guestData  = rawData.map( (key, val) ->
                 new KeyValue<String, GuestWrapper>(val.getPayload().getBefore().getCLIENTID(),  processCDC(errorProducer, val)) );
 
@@ -45,7 +52,7 @@ public class BoxeverDataTransform {
         GuestSerde toSerde = new GuestSerde();
         guestData.to("boxever-locate", Produced.valueSerde(toSerde));
 
-        KafkaStreams streams = new KafkaStreams(builder, config);
+        KafkaStreams streams = new KafkaStreams(builder.build(), config);
         streams.start();
 
         // shutdown hook to correctly close the streams application
@@ -56,6 +63,10 @@ public class BoxeverDataTransform {
 
     }
 
+    /**
+     * Set up consumer properties. TODO: extract properties
+     * @return Properties for Kafka
+     */
     private static Properties setUpStreamProperties() {
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "boxever-cdc-stream");
@@ -73,6 +84,12 @@ public class BoxeverDataTransform {
         return config;
     }
 
+    /**
+     * Process CDC recortds from Oracle connector
+     * @param producer Error topic producer to track errors
+     * @param val CDC entry
+     * @return GuestWrapper containing Boxever Guest Object
+     */
     private static GuestWrapper processCDC(Producer<String, String> producer, CDCData val) {
         try {
             System.out.println("processCDC: " + val);
@@ -111,6 +128,9 @@ public class BoxeverDataTransform {
         return retVal;
     }
 
+    /**
+     * Error topic producer
+     */
     private static class SetUpErrorTopic {
         private static Producer<String, String> invoke() {
             Properties producerConfig = new Properties();

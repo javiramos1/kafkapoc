@@ -14,44 +14,16 @@ public class UpdateBot {
 
     public static void main(String[] args) {
 
-        System.out.println("-------- Oracle JDBC Connection Testing ------");
+        if (registerDriver()) return;
+
 
         try {
 
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-        } catch (ClassNotFoundException e) {
-
-            System.out.println("Where is your Oracle JDBC Driver?");
-            e.printStackTrace();
-            return;
-
-        }
-
-        System.out.println("Oracle JDBC Driver Registered!");
-
-
-
-        boolean cont = true;
-        try {
-
-            final Connection  connection = DriverManager.getConnection(
-                    JDBC_URL, USER, PASS);
-
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                public void run() {
-                    System.out.println("Clossing");
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }) );
+            final Connection connection = getConnection();
 
             int i = 1;
 
-            while(cont)
+            while(true)
             {
 
                 try {
@@ -65,15 +37,10 @@ public class UpdateBot {
                             ResultSet.CONCUR_UPDATABLE);
                     ResultSet rs = stmt.executeQuery(query);
                     while (rs.next()) {
-                        String status = rs.getString("MARITAL_STATUS");
-                        System.out.println("status " + status);
-                         status = (status.equals("S") ? "M" : "S");
-                        rs.updateString("MARITAL_STATUS", status);
-                        rs.updateRow();
-
+                        updateResult(rs);
                     }
 
-                    Thread.sleep(19000);
+                    Thread.sleep(19000); // wait
                 } catch (InterruptedException e) {
                     break;
                 }
@@ -85,7 +52,7 @@ public class UpdateBot {
 
             System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
-            cont = false;
+
             return;
 
         }
@@ -94,6 +61,49 @@ public class UpdateBot {
 
     }
 
+    private static void updateResult(ResultSet rs) throws SQLException {
+        String status = rs.getString("MARITAL_STATUS");
+        System.out.println("status " + status);
+        status = (status.equals("S") ? "M" : "S");
+        rs.updateString("MARITAL_STATUS", status);
+        rs.updateRow();
+    }
+
+    private static Connection getConnection() throws SQLException {
+        final Connection  connection = DriverManager.getConnection(
+                JDBC_URL, USER, PASS);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                System.out.println("Clossing");
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }) );
+        return connection;
+    }
+
+    private static boolean registerDriver() {
+        System.out.println("-------- Oracle JDBC Connection Testing ------");
+
+        try {
+
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("Where is your Oracle JDBC Driver?");
+            e.printStackTrace();
+            return true;
+
+        }
+
+        System.out.println("Oracle JDBC Driver Registered!");
+        return false;
+    }
 
 
 }

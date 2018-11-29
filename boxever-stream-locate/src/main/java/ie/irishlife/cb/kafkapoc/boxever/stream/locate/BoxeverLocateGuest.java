@@ -17,9 +17,9 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.KStreamBuilder;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -39,16 +39,16 @@ public class BoxeverLocateGuest {
 
         Producer<String, String> errorProducer = SetUpErrorTopic.invoke();
 
-        KStreamBuilder builder = new KStreamBuilder();
+        StreamsBuilder builder = new StreamsBuilder();
 
-        setJsonMapper();
+        setJsonMapper();// set the HTTP mapping to read the object back from Boxever
 
         KStream<String, GuestWrapper> rawData = builder.stream("boxever-locate");
-        rawData.mapValues( val ->  locateGuest(errorProducer, val));
+        rawData.mapValues( val ->  locateGuest(errorProducer, val)); // set href
 
         rawData.to( "boxever-consume");
 
-        KafkaStreams streams = new KafkaStreams(builder, config);
+        KafkaStreams streams = new KafkaStreams(builder.build(), config);
         streams.start();
 
         // shutdown hook to correctly close the streams application
@@ -81,6 +81,11 @@ public class BoxeverLocateGuest {
             }
         });
     }
+
+    /**
+     * Setup consumer. TODO: extract properties
+     * @return Properties
+     */
     private static Properties setUpStreamProperties() {
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "boxever-stream-locate");
@@ -98,6 +103,12 @@ public class BoxeverLocateGuest {
         return config;
     }
 
+    /**
+     * Find href for customer based on email
+     * @param producer error producer to send errors to
+     * @param guest GuestWrapper
+     * @return GuestWrapper updated object
+     */
     private static GuestWrapper locateGuest(Producer<String, String> producer, GuestWrapper guest) {
         try {
             System.out.println("locateGuest: " + guest);
@@ -108,8 +119,9 @@ public class BoxeverLocateGuest {
                 final String email = guest.getGuest().getEmails().get(0);
 
                 final String href = getGuestHref(email);
-                guest.setHref(href);
+                guest.setHref(href);// set the href
 
+                //get and update model
                 setGuestObj(guest, href);
 
                 retVal =  guest;
@@ -127,13 +139,20 @@ public class BoxeverLocateGuest {
         return null;
     }
 
+    /**
+     * Update Member from Boxever with the CDC data. Call Boxever GET guest.
+     * @param guest
+     * @param href
+     * @throws UnirestException
+     */
     private static void setGuestObj(GuestWrapper guest, String href) throws UnirestException {
+        // HTTP Call
         final HttpResponse<Guest> getResponse = Unirest.get(href)
                 .basicAuth(API_KEY, API_SECRET)
                 .asObject(Guest.class);
 
-        final Guest boxeverGuest = getResponse.getBody();
-        final Guest ilGuest = guest.getGuest();
+        final Guest boxeverGuest = getResponse.getBody();//current in Boxever
+        final Guest ilGuest = guest.getGuest();// the one from CDC
 
         boxeverGuest.setFirstName(ilGuest.getFirstName());
         boxeverGuest.setLastName(ilGuest.getLastName());
@@ -143,6 +162,12 @@ public class BoxeverLocateGuest {
         guest.setGuest(boxeverGuest);
     }
 
+    /**
+     * Call Boxever Locate REST end point
+     * @param email
+     * @return
+     * @throws UnirestException
+     */
     private static String getGuestHref(String email) throws UnirestException {
         HttpResponse<JsonNode> jsonResponse = Unirest.get(BASE_URL + GUEST + "?email=" + email).
                 basicAuth(API_KEY, API_SECRET).
