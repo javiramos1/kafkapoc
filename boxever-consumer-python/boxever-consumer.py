@@ -12,7 +12,7 @@ from requests.auth import HTTPBasicAuth
  
 
 API_KEY = 'iluatejwwu4e1qw9cfd6ulzqiqcei6yy'  # IL UAT
-API_SECRET = ''
+API_SECRET = 'fZG2TuIVxsJmFWOx3IaXIoxx70GPL1iu'
 BASE_URL = 'https://api.boxever.com/v2'
 BROWSER_CREATE = '/browser/create.json'
 GUEST = '/guests'
@@ -34,7 +34,7 @@ def consumeMessages():
                                              message.offset, message.key,
                                              message.value))
 
-
+                                             
           guest = json.loads(message.value)
           updateGuest(guest['href'], guest['guest']) # call API
           sleep(3)

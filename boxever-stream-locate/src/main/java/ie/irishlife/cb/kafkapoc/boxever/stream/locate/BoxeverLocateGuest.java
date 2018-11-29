@@ -28,7 +28,7 @@ import java.util.Properties;
 public class BoxeverLocateGuest {
 
     private static final String API_KEY = "iluatejwwu4e1qw9cfd6ulzqiqcei6yy";
-    private static final String API_SECRET = "";
+    private static final String API_SECRET = "fZG2TuIVxsJmFWOx3IaXIoxx70GPL1iu";
     private static final String BASE_URL = "https://api.boxever.com/v2";
 
     private static final String  GUEST = "/guests";

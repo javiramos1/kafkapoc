@@ -2,48 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1840689-8a2c-48f3-b7ec-be37901fca46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/boxever-stream-locate/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boxever-stream-transform/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_jpountz_lz4_lz4_1_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_5_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_connect_api_0_11_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_connect_json_0_11_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_2_11_0_11_0_0_cp1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_clients_0_11_0_0_cp1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_streams_0_11_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_rocksdb_rocksdbjni_5_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_modules_scala_parser_combinators_2_11_1_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_11_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/src/main/java/ie/irishlife/cb/kafkapoc/bot/UpdateBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/bot/src/main/java/ie/irishlife/cb/kafkapoc/bot/UpdateBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/target/classes/ie/irishlife/cb/kafkapoc/bot/UpdateBot$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/classes/ie/irishlife/cb/kafkapoc/bot/UpdateBot$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/target/classes/ie/irishlife/cb/kafkapoc/bot/UpdateBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/classes/ie/irishlife/cb/kafkapoc/bot/UpdateBot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-api/boxever-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/boxever-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-api/target/boxever-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/target/boxever-api-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-consumer-python/boxevere-consumer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/boxever-stream-locate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/boxever-stream-locate.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-consumer-python/boxever-consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-consumer-python/boxever-consumer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/boxever-stream-locate-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/boxever-stream-locate-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/boxever-stream-locate-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$SetUpErrorTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$SetUpErrorTopic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/boxever-stream-transform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/boxever-stream-transform.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.java" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/boxever-stream-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/boxever-stream-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/boxever-stream-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform$SetUpErrorTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform$SetUpErrorTopic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/boxever-consumer/target/" />
     <ignored path="$PROJECT_DIR$/bot/target/" />
@@ -77,6 +39,7 @@
         <counts>
           <entry key="Dockerfile" value="5" />
           <entry key="class" value="22" />
+          <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
           <entry key="java" value="79" />
           <entry key="properties" value="1" />
@@ -88,7 +51,7 @@
           <entry key="CLASS" value="22" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="79" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="PLAIN_TEXT" value="6" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="24" />
         </counts>
@@ -97,6 +60,7 @@
         <counts>
           <entry key="Dockerfile" value="39" />
           <entry key="dummy" value="69" />
+          <entry key="gitignore" value="7" />
           <entry key="java" value="3400" />
           <entry key="xml" value="314" />
         </counts>
@@ -104,7 +68,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3400" />
-          <entry key="PLAIN_TEXT" value="108" />
+          <entry key="PLAIN_TEXT" value="115" />
           <entry key="XML" value="314" />
         </counts>
       </usages-collector>
@@ -124,14 +88,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+              <caret line="30" column="78" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -251,6 +224,7 @@
         <option value="$PROJECT_DIR$/boxever-stream-locate/Dockerfile" />
         <option value="$PROJECT_DIR$/boxever-stream-locate/pom.xml" />
         <option value="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -659,7 +633,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/model/Guest.java" />
     <entry file="file://$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/cdc/Before.java" />
     <entry file="file://$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/cdc/Data.java" />
     <entry file="file://$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/serializer/CDCSerde.java" />
@@ -955,10 +928,17 @@
     <entry file="file://$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <caret line="30" column="78" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
         </state>
       </provider>
     </entry>
