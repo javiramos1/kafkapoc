@@ -5,20 +5,21 @@
 from kafka import KafkaConsumer
 from kafka import KafkaProducer
 import requests
+import os
 import json
 from time import sleep
 
 from requests.auth import HTTPBasicAuth
  
 
-API_KEY = 'iluatejwwu4e1qw9cfd6ulzqiqcei6yy'  # IL UAT
-API_SECRET = 'fZG2TuIVxsJmFWOx3IaXIoxx70GPL1iu'
-BASE_URL = 'https://api.boxever.com/v2'
+API_KEY = os.environ.get('API_KEY', 'iluatejwwu4e1qw9cfd6ulzqiqcei6yy') # IL UAT
+API_SECRET =  os.environ.get('API_KEY', '')
+BASE_URL =  os.environ.get('BASE_URL', 'https://api.boxever.com/v2')
 BROWSER_CREATE = '/browser/create.json'
 GUEST = '/guests'
-KAFKA_BROKER = 'localhost:9092'
-KAFKA_TOPIC = 'boxever-consume'
-KAFKA_GROUP = 'boxever-consume-group'
+KAFKA_BROKER =  os.environ.get('KAFKA_BROKER', 'localhost:9092')
+KAFKA_TOPIC =  os.environ.get('KAFKA_TOPIC', 'boxever-consume')
+KAFKA_GROUP =  'boxever-consume-group'
 
 # set basic auth
 session = requests.Session()

@@ -1,3 +1,4 @@
+ie/irishlife/cb/kafkapoc/boxever/api/constants/KafkaConstants.class
 ie/irishlife/cb/kafkapoc/boxever/api/serializer/CDCSerde.class
 ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestDeSerializer.class
 ie/irishlife/cb/kafkapoc/boxever/api/cdc/CDCData.class

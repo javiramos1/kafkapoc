@@ -25,15 +25,70 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Properties;
 
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.DEFAULT_BROKER;
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_BROKER;
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_TOPIC;
+
+/**
+ * Stream App that usses Boxever API to locate a guest and perform
+ * updates on the Guest model creating a result object that is ready to update.
+ *
+ */
 public class BoxeverLocateGuest {
 
-    private static final String API_KEY = "iluatejwwu4e1qw9cfd6ulzqiqcei6yy";
-    private static final String API_SECRET = "fZG2TuIVxsJmFWOx3IaXIoxx70GPL1iu";
+    private static final String API_KEY = System.getenv("API_KEY") == null  ?
+            "iluatejwwu4e1qw9cfd6ulzqiqcei6yy" : System.getenv("API_KEY");
+    private static final String API_SECRET = System.getenv("API_SECRET") == null  ?
+            "" : System.getenv("API_SECRET");;
     private static final String BASE_URL = "https://api.boxever.com/v2";
 
     private static final String  GUEST = "/guests";
 
+    /**
+     * Setup consumer. Uses env variables for docker.
+     * @return Properties
+     */
+    private static Properties setUpStreamProperties() {
+        Properties config = new Properties();
 
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_TOPIC) == null
+                ? "boxever-stream-locate" : System.getenv(KAFKA_TOPIC) );
+
+        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
+                ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
+
+        config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, GuestSerde.class);
+
+        config.put(
+                StreamsConfig.PRODUCER_PREFIX + ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
+                "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor");
+
+        config.put(
+                StreamsConfig.CONSUMER_PREFIX + ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
+                "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor");
+        return config;
+    }
+
+    private static class SetUpErrorTopic {
+        private static Producer<String, String> invoke() {
+            Properties producerConfig = new Properties();
+            producerConfig.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
+                    ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
+
+            producerConfig.put(ProducerConfig.ACKS_CONFIG, "all");
+            producerConfig.put(ProducerConfig.RETRIES_CONFIG, 0);
+            return new KafkaProducer<>(producerConfig, new StringSerializer(),  new StringSerializer());
+        }
+    }
+
+
+    /**
+     * Main Method.
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         Properties config = setUpStreamProperties();
 
@@ -59,6 +114,9 @@ public class BoxeverLocateGuest {
 
     }
 
+    /**
+     * HTTP JSON  body mapper
+     */
     private static void setJsonMapper(){
         Unirest.setObjectMapper(new ObjectMapper() {
             private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
@@ -82,26 +140,7 @@ public class BoxeverLocateGuest {
         });
     }
 
-    /**
-     * Setup consumer. TODO: extract properties
-     * @return Properties
-     */
-    private static Properties setUpStreamProperties() {
-        Properties config = new Properties();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "boxever-stream-locate");
-        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        //config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-        config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, GuestSerde.class);
-        config.put(
-                StreamsConfig.PRODUCER_PREFIX + ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor");
 
-        config.put(
-                StreamsConfig.CONSUMER_PREFIX + ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor");
-        return config;
-    }
 
     /**
      * Find href for customer based on email
@@ -179,13 +218,4 @@ public class BoxeverLocateGuest {
     }
 
 
-    private static class SetUpErrorTopic {
-        private static Producer<String, String> invoke() {
-            Properties producerConfig = new Properties();
-            producerConfig.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:2181");
-            producerConfig.put(ProducerConfig.ACKS_CONFIG, "all");
-            producerConfig.put(ProducerConfig.RETRIES_CONFIG, 0);
-            return new KafkaProducer<>(producerConfig, new StringSerializer(),  new StringSerializer());
-        }
-    }
 }

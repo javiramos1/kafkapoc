@@ -28,6 +28,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Properties;
 
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.DEFAULT_BROKER;
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_BROKER;
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_TOPIC;
+
 
 /**
  * Stream App that transform CDC data into Boxever Model
@@ -35,6 +39,52 @@ import java.util.Properties;
  *
  */
 public class BoxeverDataTransform {
+
+
+    /**
+     * Set up consumer properties. Uses env variables for docker.
+     * @return Properties for Kafka
+     */
+    private static Properties setUpStreamProperties() {
+        Properties config = new Properties();
+
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_TOPIC) == null
+                ? "boxever-cdc-stream" : System.getenv(KAFKA_TOPIC) );
+
+        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
+                ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
+
+        config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, CDCSerde.class);
+        config.put(
+                StreamsConfig.PRODUCER_PREFIX + ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
+                "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor");
+
+        config.put(
+                StreamsConfig.CONSUMER_PREFIX + ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
+                "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor");
+        return config;
+    }
+
+    /**
+     * Error topic producer
+     */
+    private static class SetUpErrorTopic {
+        private static Producer<String, String> invoke() {
+            Properties producerConfig = new Properties();
+            producerConfig.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
+                    ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
+            producerConfig.put(ProducerConfig.ACKS_CONFIG, "all");
+            producerConfig.put(ProducerConfig.RETRIES_CONFIG, 0);
+            return new KafkaProducer<>(producerConfig, new StringSerializer(),  new StringSerializer());
+        }
+    }
+
+    /**
+     * Main Method
+     * @param args none used
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         Properties config = setUpStreamProperties();
 
@@ -63,26 +113,6 @@ public class BoxeverDataTransform {
 
     }
 
-    /**
-     * Set up consumer properties. TODO: extract properties
-     * @return Properties for Kafka
-     */
-    private static Properties setUpStreamProperties() {
-        Properties config = new Properties();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "boxever-cdc-stream");
-        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        // config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-        config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, CDCSerde.class);
-        config.put(
-                StreamsConfig.PRODUCER_PREFIX + ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor");
-
-        config.put(
-                StreamsConfig.CONSUMER_PREFIX + ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor");
-        return config;
-    }
 
     /**
      * Process CDC recortds from Oracle connector
@@ -128,18 +158,7 @@ public class BoxeverDataTransform {
         return retVal;
     }
 
-    /**
-     * Error topic producer
-     */
-    private static class SetUpErrorTopic {
-        private static Producer<String, String> invoke() {
-            Properties producerConfig = new Properties();
-            producerConfig.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:2181");
-            producerConfig.put(ProducerConfig.ACKS_CONFIG, "all");
-            producerConfig.put(ProducerConfig.RETRIES_CONFIG, 0);
-            return new KafkaProducer<>(producerConfig, new StringSerializer(),  new StringSerializer());
-        }
-    }
+
 }
 
 

@@ -40,7 +40,7 @@ public class UpdateBot {
                         updateResult(rs);
                     }
 
-                    Thread.sleep(19000); // wait
+                    Thread.sleep(10000); // wait
                 } catch (InterruptedException e) {
                     break;
                 }
