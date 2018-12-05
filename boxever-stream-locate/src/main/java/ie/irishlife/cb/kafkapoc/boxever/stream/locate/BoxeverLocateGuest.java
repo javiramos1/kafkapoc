@@ -34,6 +34,10 @@ import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFK
  * Stream App that usses Boxever API to locate a guest and perform
  * updates on the Guest model creating a result object that is ready to update.
  *
+ *  * USE: http://www.jsonschema2pojo.org/ for mapping JSON
+ *  *
+ *  * TODO: Use Avro + Schema Registry instead of JSON
+ *
  */
 public class BoxeverLocateGuest {
 

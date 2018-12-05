@@ -36,6 +36,10 @@ import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.*;
  * Stream App that transform CDC data into Boxever Model
  * It gather the data from Irish Life and transform it into the Boxever Model.
  *
+ * USE: http://www.jsonschema2pojo.org/ for mapping JSON
+ *
+ * TODO: Use Avro + Schema Registry instead of JSON
+ *
  */
 public class BoxeverDataTransform {
 
@@ -49,6 +53,7 @@ public class BoxeverDataTransform {
     private static Properties setUpStreamProperties() {
         Properties config = new Properties();
 
+        // Use ENV vars for containers
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_TOPIC) == null
                 ? "boxever-cdc-stream" : System.getenv(KAFKA_TOPIC) );
 
@@ -138,7 +143,7 @@ public class BoxeverDataTransform {
 
 
     /**
-     * Process CDC recortds from Oracle connector
+     * Process CDC records from Oracle connector
      * @param producer Error topic producer to track errors
      * @param val CDC entry
      * @return GuestWrapper containing Boxever Guest Object
