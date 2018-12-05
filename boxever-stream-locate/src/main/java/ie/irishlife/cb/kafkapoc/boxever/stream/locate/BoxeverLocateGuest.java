@@ -20,6 +20,7 @@ import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -36,8 +37,10 @@ import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFK
  */
 public class BoxeverLocateGuest {
 
+    private final static Logger LOG = Logger.getLogger(BoxeverLocateGuest.class);
+
     private static final String API_KEY = System.getenv("API_KEY") == null  ?
-            "iluatejwwu4e1qw9cfd6ulzqiqcei6yy" : System.getenv("API_KEY");
+            "" : System.getenv("API_KEY");
     private static final String API_SECRET = System.getenv("API_SECRET") == null  ?
             "" : System.getenv("API_SECRET");;
     private static final String BASE_URL = "https://api.boxever.com/v2";
@@ -89,10 +92,17 @@ public class BoxeverLocateGuest {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
+
+        LOG.info("App Starting...");
+
         Properties config = setUpStreamProperties();
 
-        Producer<String, String> errorProducer = SetUpErrorTopic.invoke();
+        LOG.info(" Kafka Properties set: " + config);
+
+        final Producer<String, String> errorProducer = SetUpErrorTopic.invoke();
+
+        LOG.info(" errorProducer initialized: " + errorProducer);
 
         StreamsBuilder builder = new StreamsBuilder();
 
@@ -103,13 +113,19 @@ public class BoxeverLocateGuest {
 
         rawData.to( "boxever-consume");
 
-        KafkaStreams streams = new KafkaStreams(builder.build(), config);
+        LOG.info(" KStream initialized: " + rawData);
+
+        final KafkaStreams streams = new KafkaStreams(builder.build(), config);
         streams.start();
+
+        LOG.info(" KStream started: " + streams);
 
         // shutdown hook to correctly close the streams application
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            LOG.warn(" BoxeverLocateGuest stopped ");
             streams.close();
             errorProducer.close();
+            LOG.warn(" BoxeverLocateGuest resources closed ");
         }));
 
     }
@@ -150,7 +166,7 @@ public class BoxeverLocateGuest {
      */
     private static GuestWrapper locateGuest(Producer<String, String> producer, GuestWrapper guest) {
         try {
-            System.out.println("locateGuest: " + guest);
+            LOG.info("locateGuest: " + guest);
 
             GuestWrapper retVal = null;
 
@@ -170,7 +186,7 @@ public class BoxeverLocateGuest {
 
         }catch (Exception e) {
             // log + ignore/skip the corrupted message
-            System.err.println("Could not deserialize record: " + e.getMessage());
+            LOG.error("Could not deserialize record: " + e.getMessage());
             producer.send(new ProducerRecord<String, String>("boxever-error", (guest == null ? "Null" : guest.toString()), e.getMessage()));
 
         }
@@ -193,11 +209,18 @@ public class BoxeverLocateGuest {
         final Guest boxeverGuest = getResponse.getBody();//current in Boxever
         final Guest ilGuest = guest.getGuest();// the one from CDC
 
-        boxeverGuest.setFirstName(ilGuest.getFirstName());
-        boxeverGuest.setLastName(ilGuest.getLastName());
-        boxeverGuest.setDateOfBirth(ilGuest.getDateOfBirth());
-        boxeverGuest.setEmails(ilGuest.getEmails());
-        boxeverGuest.setStreet(ilGuest.getStreet());
+        //TODO: Map more values
+        boxeverGuest.setFirstName(ilGuest.getFirstName() == null ?
+                boxeverGuest.getFirstName() : ilGuest.getFirstName());
+        boxeverGuest.setLastName(ilGuest.getLastName() == null ?
+                boxeverGuest.getLastName() : ilGuest.getLastName());
+        boxeverGuest.setDateOfBirth(ilGuest.getDateOfBirth() == null ?
+                boxeverGuest.getDateOfBirth() : ilGuest.getDateOfBirth());
+        boxeverGuest.setEmails(ilGuest.getEmails() == null ?
+                boxeverGuest.getEmails() : ilGuest.getEmails());
+        boxeverGuest.setStreet(ilGuest.getStreet() == null ?
+                boxeverGuest.getStreet() : ilGuest.getStreet());
+
         guest.setGuest(boxeverGuest);
     }
 
@@ -211,7 +234,7 @@ public class BoxeverLocateGuest {
         HttpResponse<JsonNode> jsonResponse = Unirest.get(BASE_URL + GUEST + "?email=" + email).
                 basicAuth(API_KEY, API_SECRET).
                 asJson();
-        System.out.println("jsonResponse: " + jsonResponse);
+        LOG.info("jsonResponse: " + jsonResponse);
 
         final JSONObject refObj = (JSONObject)jsonResponse.getBody().getObject().getJSONArray("items").get(0);
         return refObj.getString("href");

@@ -15,3 +15,4 @@
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Payload.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Before.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Schema.java
+/home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/constants/KafkaConstants.java
