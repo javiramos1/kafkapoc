@@ -87,7 +87,8 @@ public class BoxeverDataTransform {
     }
 
     /**
-     * Main Method
+     * Main Method stream processing
+     *
      * @param args none used
      * @throws IOException
      */
@@ -108,17 +109,9 @@ public class BoxeverDataTransform {
         KStream<String, CDCData> rawData = builder.stream("cdc");
 
         //Transform into <ClientID,GuestWrapper> key value pair
-
-        KStream<String, GuestWrapper>  guestData  = rawData.map( (key, val) -> {
-
-            Map<String, Object> json =  (Map) val.getPayload().getBefore();
-
-            LOG.debug("NEW MESSAGE: \n" + val.getPayload());
-
-            final String clientId = (String) json.get("CLIENTID");
-                   return new KeyValue<String, GuestWrapper>(clientId,
-                            processCDC(errorProducer, val));
-                });
+        KStream<String, GuestWrapper>  guestData  = rawData.map( (key, val) ->
+            processRecord(errorProducer, val)
+        );
 
 
         GuestSerde toSerde = new GuestSerde();
@@ -139,6 +132,30 @@ public class BoxeverDataTransform {
             LOG.warn(" BoxeverDataTransform resources closed ");
         }));
 
+    }
+
+    /**
+     * Prrocess records and map the CDC record to a Guest record using client ID as primary key for partitioning
+     * @param errorProducer
+     * @param val
+     * @return
+     */
+    private static KeyValue<String, GuestWrapper> processRecord(Producer<String, String> errorProducer, CDCData val) {
+        Map<String, Object> json =  (Map) val.getPayload().getBefore();
+
+        LOG.debug("NEW MESSAGE: \n" + val.getPayload());
+
+        final String clientId = (String) json.get("CLIENTID");
+
+        if (clientId == null) {
+            //TODO: execute JDBC query to get it
+            LOG.error("Couldn't retrieve client ID");
+            errorProducer.send(new ProducerRecord<String, String>("boxever-error",
+                    "No primary Key", "Client ID not found"));
+            return null;
+        }
+        return new KeyValue<String, GuestWrapper>(clientId,
+                        processCDC(errorProducer, val));
     }
 
 
