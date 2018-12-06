@@ -1,5 +1,4 @@
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/CDCData.java
-/home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Data.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestSerde.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Field_.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/model/Subscription.java
@@ -13,6 +12,5 @@
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/serializer/GuestSerializer.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/serializer/CDCSerializer.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Payload.java
-/home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Before.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Schema.java
 /home/javier/prog/kafkapoc/poc/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/constants/KafkaConstants.java

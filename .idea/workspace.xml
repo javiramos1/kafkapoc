@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1840689-8a2c-48f3-b7ec-be37901fca46" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.java" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bot/target/bot-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-api/target/boxever-api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/target/boxever-api-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/boxever-stream-locate-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/boxever-stream-locate-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$SetUpErrorTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest$SetUpErrorTopic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-locate/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/boxever-stream-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/boxever-stream-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform$SetUpErrorTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform$SetUpErrorTopic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.class" beforeDir="false" afterPath="$PROJECT_DIR$/boxever-stream-transform/target/classes/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/boxever-consumer/target/" />
     <ignored path="$PROJECT_DIR$/bot/target/" />
@@ -40,7 +50,7 @@
         <counts>
           <entry key="Dockerfile" value="5" />
           <entry key="class" value="28" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="iml" value="1" />
           <entry key="java" value="92" />
           <entry key="properties" value="3" />
@@ -52,7 +62,7 @@
           <entry key="CLASS" value="28" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="92" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="3" />
           <entry key="XML" value="26" />
         </counts>
@@ -61,7 +71,7 @@
         <counts>
           <entry key="Dockerfile" value="39" />
           <entry key="dummy" value="82" />
-          <entry key="gitignore" value="8" />
+          <entry key="gitignore" value="9" />
           <entry key="java" value="5166" />
           <entry key="xml" value="314" />
         </counts>
@@ -69,7 +79,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="5166" />
-          <entry key="PLAIN_TEXT" value="129" />
+          <entry key="PLAIN_TEXT" value="130" />
           <entry key="XML" value="314" />
         </counts>
       </usages-collector>
@@ -101,13 +111,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="39" column="2" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
+            <state relative-caret-position="405">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -202,7 +217,6 @@
         <option value="$PROJECT_DIR$/boxever-stream-transform/Dockerfile" />
         <option value="$PROJECT_DIR$/boxever-stream-locate/Dockerfile" />
         <option value="$PROJECT_DIR$/boxever-stream-locate/pom.xml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/bot/src/main/java/ie/irishlife/cb/kafkapoc/bot/UpdateBot.java" />
         <option value="$PROJECT_DIR$/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/model/Guest.java" />
         <option value="$PROJECT_DIR$/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/constants/KafkaConstants.java" />
@@ -212,6 +226,7 @@
         <option value="$PROJECT_DIR$/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Payload.java" />
         <option value="$PROJECT_DIR$/boxever-api/src/main/java/ie/irishlife/cb/kafkapoc/boxever/api/cdc/Before.java" />
         <option value="$PROJECT_DIR$/boxever-stream-transform/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/transform/BoxeverDataTransform.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java" />
       </list>
     </option>
@@ -555,7 +570,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295583" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49840257" weight="0.30464327" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49840257" visible="true" weight="0.30464327" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159746" side_tool="true" weight="0.3997735" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840257" weight="0.3295583" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -819,13 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/boxever-stream-transform/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1695">
@@ -981,10 +989,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/boxever-stream-locate/src/main/java/ie/irishlife/cb/kafkapoc/boxever/stream/locate/BoxeverLocateGuest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="39" column="2" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
+        <state relative-caret-position="405">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
