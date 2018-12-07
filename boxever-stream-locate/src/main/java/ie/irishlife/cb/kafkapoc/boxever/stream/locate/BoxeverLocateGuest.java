@@ -26,9 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Properties;
 
-import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.DEFAULT_BROKER;
-import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_BROKER;
-import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.KAFKA_TOPIC;
+import static ie.irishlife.cb.kafkapoc.boxever.api.constants.KafkaConstants.*;
 
 /**
  * Stream App that uses Boxever API to locate a guest and perform
@@ -58,8 +56,8 @@ public class BoxeverLocateGuest {
     private static Properties setUpStreamProperties() {
         Properties config = new Properties();
 
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_TOPIC) == null
-                ? "boxever-stream-locate" : System.getenv(KAFKA_TOPIC) );
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_STREAM_APP) == null
+                ? "boxever-stream-locate" : System.getenv(KAFKA_STREAM_APP) );
 
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
                 ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
@@ -112,7 +110,9 @@ public class BoxeverLocateGuest {
 
         setJsonMapper();// set the HTTP mapping to read the object back from Boxever
 
-        KStream<String, GuestWrapper> rawData = builder.stream("boxever-locate");
+        KStream<String, GuestWrapper> rawData = builder.stream(System.getenv(KAFKA_TOPIC) == null
+                ? "boxever-locate"  : System.getenv(KAFKA_TOPIC) );
+
         rawData.mapValues( val ->  locateGuest(errorProducer, val)); // set href
 
         rawData.to( "boxever-consume");

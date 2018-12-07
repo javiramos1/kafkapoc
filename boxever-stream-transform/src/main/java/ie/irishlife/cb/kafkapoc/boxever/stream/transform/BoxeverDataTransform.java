@@ -54,8 +54,9 @@ public class BoxeverDataTransform {
         Properties config = new Properties();
 
         // Use ENV vars for containers
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_TOPIC) == null
-                ? "boxever-cdc-stream" : System.getenv(KAFKA_TOPIC) );
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, System.getenv(KAFKA_STREAM_APP) == null
+                ? "boxever-cdc-stream" : System.getenv(KAFKA_STREAM_APP) );
+
 
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv(KAFKA_BROKER) == null
                 ? DEFAULT_BROKER : System.getenv(KAFKA_BROKER));
@@ -69,6 +70,8 @@ public class BoxeverDataTransform {
         config.put(
                 StreamsConfig.CONSUMER_PREFIX + ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
                 "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor");
+
+        LOG.info("CONFIG: " + config);
         return config;
     }
 
@@ -106,7 +109,8 @@ public class BoxeverDataTransform {
 
         StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, CDCData> rawData = builder.stream("cdc");
+        KStream<String, CDCData> rawData = builder.stream(System.getenv(KAFKA_TOPIC) == null
+                ? "cdc" : System.getenv(KAFKA_TOPIC) );
 
         //Transform into <ClientID,GuestWrapper> key value pair
         KStream<String, GuestWrapper>  guestData  = rawData.map( (key, val) ->
@@ -148,7 +152,7 @@ public class BoxeverDataTransform {
         final String clientId = (String) json.get("CLIENTID");
 
         if (clientId == null) {
-            //TODO: execute JDBC query to get it
+
             LOG.error("Couldn't retrieve client ID");
             errorProducer.send(new ProducerRecord<String, String>("boxever-error",
                     "No primary Key", "Client ID not found"));
