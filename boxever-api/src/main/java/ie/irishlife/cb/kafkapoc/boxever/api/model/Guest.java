@@ -3,7 +3,6 @@ package ie.irishlife.cb.kafkapoc.boxever.api.model;
 import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -263,6 +262,36 @@ public class Guest implements Serializable {
         this.emails = emails;
     }
 
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "ref='" + ref + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", modifiedAt='" + modifiedAt + '\'' +
+                ", firstSeen='" + firstSeen + '\'' +
+                ", lastSeen='" + lastSeen + '\'' +
+                ", guestType='" + guestType + '\'' +
+                ", title='" + title + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", emails=" + emails +
+                ", phoneNumbers=" + phoneNumbers +
+                ", nationality='" + nationality + '\'' +
+                ", passportNumber='" + passportNumber + '\'' +
+                ", passportExpiry='" + passportExpiry + '\'' +
+                ", street=" + street +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", state='" + state + '\'' +
+                ", subscriptions=" + subscriptions +
+                ", identifiers=" + identifiers +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
+
     public Guest withEmails(List<String> emails) {
         this.emails = emails;
         return this;
@@ -446,11 +475,6 @@ public class Guest implements Serializable {
     public Guest withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("ref", ref).append("createdAt", createdAt).append("modifiedAt", modifiedAt).append("firstSeen", firstSeen).append("lastSeen", lastSeen).append("guestType", guestType).append("title", title).append("firstName", firstName).append("lastName", lastName).append("gender", gender).append("dateOfBirth", dateOfBirth).append("emails", emails).append("phoneNumbers", phoneNumbers).append("nationality", nationality).append("passportNumber", passportNumber).append("passportExpiry", passportExpiry).append("street", street).append("city", city).append("country", country).append("postCode", postCode).append("state", state).append("subscriptions", subscriptions).append("identifiers", identifiers).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override

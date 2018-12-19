@@ -5,20 +5,21 @@
 from kafka import KafkaConsumer
 from kafka import KafkaProducer
 import requests
+import os
 import json
 from time import sleep
 
 from requests.auth import HTTPBasicAuth
  
 
-API_KEY = 'iluatejwwu4e1qw9cfd6ulzqiqcei6yy'  # IL UAT
-API_SECRET = 'fZG2TuIVxsJmFWOx3IaXIoxx70GPL1iu'
-BASE_URL = 'https://api.boxever.com/v2'
+API_KEY = os.environ.get('API_KEY', '') # IL UAT
+API_SECRET =  os.environ.get('API_KEY', '')
+BASE_URL =  os.environ.get('BASE_URL', 'https://api.boxever.com/v2')
 BROWSER_CREATE = '/browser/create.json'
 GUEST = '/guests'
-KAFKA_BROKER = 'localhost:9092'
-KAFKA_TOPIC = 'boxever-consume'
-KAFKA_GROUP = 'boxever-consume-group'
+KAFKA_BROKER =  os.environ.get('KAFKA_BROKER', 'localhost:9092')
+KAFKA_TOPIC =  os.environ.get('KAFKA_TOPIC', 'boxever-consume')
+KAFKA_GROUP =  'boxever-consume-group'
 
 # set basic auth
 session = requests.Session()
@@ -28,7 +29,8 @@ session.auth = (API_KEY, API_SECRET)
 def consumeMessages():
      consumer = KafkaConsumer(KAFKA_TOPIC,
                               group_id = KAFKA_GROUP,
-                              bootstrap_servers = [KAFKA_BROKER])
+                              bootstrap_servers = [KAFKA_BROKER],
+                              enable_auto_commit=False)
      for message in consumer:
           print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
                                              message.offset, message.key,
@@ -37,7 +39,8 @@ def consumeMessages():
                                              
           guest = json.loads(message.value)
           updateGuest(guest['href'], guest['guest']) # call API
-          sleep(3)
+          consumer.commit()
+          sleep(1)
 
 # Call Boxever API POST request
 def updateGuest(href, guest):

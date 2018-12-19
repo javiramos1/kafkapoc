@@ -35,9 +35,9 @@ public class Payload implements Serializable {
     @JsonProperty("OPERATION")
     private String oPERATION;
     @JsonProperty("data")
-    private Data data;
+    private Object data;
     @JsonProperty("before")
-    private Before before;
+    private Object before;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = -8764057435608659915L;
@@ -58,7 +58,7 @@ public class Payload implements Serializable {
      * @param sQLREDO
      * @param tIMESTAMP
      */
-    public Payload(Integer sCN, String sEGOWNER, String tABLENAME, Long tIMESTAMP, String sQLREDO, String oPERATION, Data data, Before before) {
+    public Payload(Integer sCN, String sEGOWNER, String tABLENAME, Long tIMESTAMP, String sQLREDO, String oPERATION, Object data, Object before) {
         super();
         this.sCN = sCN;
         this.sEGOWNER = sEGOWNER;
@@ -131,22 +131,22 @@ public class Payload implements Serializable {
     }
 
     @JsonProperty("data")
-    public Data getData() {
+    public Object getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(Data data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
     @JsonProperty("before")
-    public Before getBefore() {
+    public Object getBefore() {
         return before;
     }
 
     @JsonProperty("before")
-    public void setBefore(Before before) {
+    public void setBefore(Object before) {
         this.before = before;
     }
 
