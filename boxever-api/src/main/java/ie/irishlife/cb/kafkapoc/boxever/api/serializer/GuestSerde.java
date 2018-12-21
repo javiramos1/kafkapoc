@@ -1,6 +1,6 @@
 package ie.irishlife.cb.kafkapoc.boxever.api.serializer;
 
-import ie.irishlife.cb.kafkapoc.boxever.api.model.GuestWrapper;
+import ie.irishlife.cb.kafkapoc.boxever.api.model.boxever.GuestWrapper;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serializer;

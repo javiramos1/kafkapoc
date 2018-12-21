@@ -1,4 +1,4 @@
-package ie.irishlife.cb.kafkapoc.boxever.api.model;
+package ie.irishlife.cb.kafkapoc.boxever.api.model.boxever;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

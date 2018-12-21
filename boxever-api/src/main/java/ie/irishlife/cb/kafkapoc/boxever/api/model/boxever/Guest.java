@@ -1,4 +1,4 @@
-package ie.irishlife.cb.kafkapoc.boxever.api.model;
+package ie.irishlife.cb.kafkapoc.boxever.api.model.boxever;
 
 import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -80,9 +80,9 @@ public class Guest implements Serializable {
     @JsonProperty("state")
     private String state;
     @JsonProperty("subscriptions")
-    private List<ie.irishlife.cb.kafkapoc.boxever.api.model.Subscription> subscriptions = null;
+    private List<Subscription> subscriptions = null;
     @JsonProperty("identifiers")
-    private List<ie.irishlife.cb.kafkapoc.boxever.api.model.Identifier> identifiers = null;
+    private List<Identifier> identifiers = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 3954895252378680820L;
@@ -433,31 +433,31 @@ public class Guest implements Serializable {
     }
 
     @JsonProperty("subscriptions")
-    public List<ie.irishlife.cb.kafkapoc.boxever.api.model.Subscription> getSubscriptions() {
+    public List<Subscription> getSubscriptions() {
         return subscriptions;
     }
 
     @JsonProperty("subscriptions")
-    public void setSubscriptions(List<ie.irishlife.cb.kafkapoc.boxever.api.model.Subscription> subscriptions) {
+    public void setSubscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
     }
 
-    public Guest withSubscriptions(List<ie.irishlife.cb.kafkapoc.boxever.api.model.Subscription> subscriptions) {
+    public Guest withSubscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
         return this;
     }
 
     @JsonProperty("identifiers")
-    public List<ie.irishlife.cb.kafkapoc.boxever.api.model.Identifier> getIdentifiers() {
+    public List<Identifier> getIdentifiers() {
         return identifiers;
     }
 
     @JsonProperty("identifiers")
-    public void setIdentifiers(List<ie.irishlife.cb.kafkapoc.boxever.api.model.Identifier> identifiers) {
+    public void setIdentifiers(List<Identifier> identifiers) {
         this.identifiers = identifiers;
     }
 
-    public Guest withIdentifiers(List<ie.irishlife.cb.kafkapoc.boxever.api.model.Identifier> identifiers) {
+    public Guest withIdentifiers(List<Identifier> identifiers) {
         this.identifiers = identifiers;
         return this;
     }

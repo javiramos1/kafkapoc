@@ -1,4 +1,4 @@
-package ie.irishlife.cb.kafkapoc.boxever.api.model;
+package ie.irishlife.cb.kafkapoc.boxever.api.model.boxever;
 
 import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;

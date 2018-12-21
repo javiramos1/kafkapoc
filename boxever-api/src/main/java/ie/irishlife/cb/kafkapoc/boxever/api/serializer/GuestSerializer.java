@@ -1,7 +1,7 @@
 package ie.irishlife.cb.kafkapoc.boxever.api.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ie.irishlife.cb.kafkapoc.boxever.api.model.GuestWrapper;
+import ie.irishlife.cb.kafkapoc.boxever.api.model.boxever.GuestWrapper;
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;

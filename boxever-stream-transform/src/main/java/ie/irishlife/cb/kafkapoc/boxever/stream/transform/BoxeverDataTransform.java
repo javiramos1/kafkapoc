@@ -3,9 +3,9 @@ package ie.irishlife.cb.kafkapoc.boxever.stream.transform;
 
 import ie.irishlife.cb.kafkapoc.boxever.api.cdc.CDCData;
 import ie.irishlife.cb.kafkapoc.boxever.api.cdc.Payload;
-import ie.irishlife.cb.kafkapoc.boxever.api.model.Guest;
-import ie.irishlife.cb.kafkapoc.boxever.api.model.GuestWrapper;
-import ie.irishlife.cb.kafkapoc.boxever.api.model.Identifier;
+import ie.irishlife.cb.kafkapoc.boxever.api.model.boxever.Guest;
+import ie.irishlife.cb.kafkapoc.boxever.api.model.boxever.GuestWrapper;
+import ie.irishlife.cb.kafkapoc.boxever.api.model.boxever.Identifier;
 import ie.irishlife.cb.kafkapoc.boxever.api.serializer.CDCSerde;
 import ie.irishlife.cb.kafkapoc.boxever.api.serializer.GuestSerde;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
